@@ -24,6 +24,8 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
+TARGET_KERNEL_SOURCE := kernel/htc/msm8960
+
 BOARD_VENDOR := htc
 
 # Bootloader
