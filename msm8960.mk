@@ -33,6 +33,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+# System properties
+-include $(LOCAL_PATH)/system_prop.mk
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -43,7 +46,7 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     tinymix
 
-# Graphics
+# Display
 PRODUCT_PACKAGES += \
     copybit.msm8960 \
     gralloc.msm8960 \
@@ -51,9 +54,21 @@ PRODUCT_PACKAGES += \
     libgenlock \
     memtrack.msm8960
 
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8960
+
+# Media
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -65,13 +80,17 @@ PRODUCT_PACKAGES += \
     libOmxAmrEnc \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
-    libstagefrighthw
+    libstagefrighthw \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += \
+    qcmediaplayer
 
 # Power
 PRODUCT_PACKAGES += \
     power.msm8960
 
-# QCOM rngd
+# QRNGD
 PRODUCT_PACKAGES += \
     qrngd
 
@@ -79,39 +98,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# Filesystem management tools
+# WiFi
 PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
-
-# Media config
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml
-
-# Common build properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    com.qc.hardware=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=true \
-    persist.audio.fluence.mode=endfire \
-    persist.audio.vr.enable=false \
-    persist.audio.handset.mic=digital \
-    persist.audio.speaker.location=high \
-    ro.qc.sdk.audio.fluencetype=fluence \
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.composition.type=dyn \
-    debug.egl.hw=1 \
-    debug.mdpcomp.logs=0 \
-    debug.sf.hw=1 \
-    persist.hwc.mdpcomp.enable=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.thermal.monitor=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.call_ring.multiple=0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0
+    dhcpcd.conf \
+    hostapd \
+    wpa_supplicant \
+    wpa_supplicant.conf

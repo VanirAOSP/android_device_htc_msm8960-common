@@ -42,7 +42,6 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a15
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
 TARGET_CPU_VARIANT := krait
 TARGET_ARCH_VARIANT_FPU := neon-vfpv4
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
@@ -52,16 +51,13 @@ COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_DISPLAY_VARIANT := caf
-TARGET_QCOM_MEDIA_VARIANT := caf
-TARGET_USES_QCOM_BSP := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
+QCOM_ANC_HEADSET_ENABLED := false
+QCOM_FLUENCE_ENABLED := false
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -78,29 +74,3 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
-
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-    device/htc/msm8960-common/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    app.te \
-    bluetooth.te \
-    device.te \
-    domain.te \
-    drmserver.te \
-    file_contexts \
-    file.te \
-    hci_init.te \
-    healthd.te \
-    init_shell.te \
-    init.te \
-    keystore.te \
-    kickstart.te \
-    mediaserver.te \
-    rild.te \
-    surfaceflinger.te \
-    system.te \
-    ueventd.te \
-    wpa_socket.te \
-    wpa.te
