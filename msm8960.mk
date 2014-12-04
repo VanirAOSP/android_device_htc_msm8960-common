@@ -92,10 +92,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     power.msm8960
 
-# QRNGD
-PRODUCT_PACKAGES += \
-    qrngd
-
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
@@ -104,5 +100,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd \
+    hostapd_default.conf \
     wpa_supplicant \
     wpa_supplicant.conf
