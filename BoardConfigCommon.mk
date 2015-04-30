@@ -27,6 +27,9 @@
 
 BOARD_VENDOR := htc
 
+# Default kernel source
+TARGET_KERNEL_SOURCE := kernel/htc/msm8960
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 TARGET_NO_BOOTLOADER := true
